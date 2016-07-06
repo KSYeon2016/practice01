@@ -9,8 +9,9 @@ public class GuessNumber {
 		Random random = new Random();
 		Scanner scanner = new Scanner(System.in);
 
+		// 다시 하는지 묻는 while문
 		boolean exit = false;
-		while(true){	//다시 하는지 묻는 while문
+		do{
 			int number = random.nextInt(100)+1;
 			int max = 100;
 			int min = 1;
@@ -19,7 +20,8 @@ public class GuessNumber {
 			System.out.println("수를 결정하였습니다. 맞추어 보세요.");
 			System.out.println("정답 : " + number);
 			
-			while(true){	// 게임 한 판의 while문
+			// 게임 한 판의 while문
+			while(true){
 				System.out.print(count + ">>");
 				int sNum = scanner.nextInt();
 				
@@ -38,6 +40,7 @@ public class GuessNumber {
 				count = count + 1;
 			}
 			
+			// 게임 재실행 여부
 			do{
 				System.out.print("다시 하시겠습니까? (y/n) ");
 				String answer = scanner.next();
@@ -50,10 +53,8 @@ public class GuessNumber {
 				}
 			} while(true);
 			
-			if(exit == true){
-				break;
-			}
-		}
+		} while(exit == false);
+		
 		scanner.close();
 	}
 }
