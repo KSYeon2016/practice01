@@ -9,6 +9,7 @@ public class GuessNumber {
 		Random random = new Random();
 		Scanner scanner = new Scanner(System.in);
 
+		boolean exit = false;
 		while(true){	//다시 하는지 묻는 while문
 			int number = random.nextInt(100)+1;
 			int max = 100;
@@ -37,15 +38,22 @@ public class GuessNumber {
 				count = count + 1;
 			}
 			
-			// y나 n이 아닌 다른 값을 입력했을 경우 다시 할 것을 묻도록 수정할 것
-			System.out.print("다시 하시겠습니까? (y/n) ");
-			String answer = scanner.next();
-			if(answer.equals("y")){	//객체는 메소드를 사용
-			} else if (answer.equals("n")){
-				System.out.println("게임을 종료합니다.");
-				scanner.close();
+			do{
+				System.out.print("다시 하시겠습니까? (y/n) ");
+				String answer = scanner.next();
+				if(answer.equals("y")){	//객체는 메소드를 사용
+					break;
+				} else if (answer.equals("n")){
+					System.out.println("게임을 종료합니다.");
+					exit = true;
+					break;
+				}
+			} while(true);
+			
+			if(exit == true){
 				break;
 			}
 		}
+		scanner.close();
 	}
 }
